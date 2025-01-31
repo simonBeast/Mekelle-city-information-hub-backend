@@ -11,9 +11,11 @@ const Event = require("../models/event");
       
       let event = await Event.create({
         name: req.body.name,
-        description: req.body.description
+        description: req.body.description,
+        date: req.body.date,
+        picture: req.body.picture
       });
-      res.status(200).json({
+      res.status(201).json({
         status: "Success",
         data: event
       });

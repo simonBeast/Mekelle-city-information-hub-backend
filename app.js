@@ -10,15 +10,24 @@ const localBusinessRouter = require('./routes/localBusinessRoute');
 const errorHandleMW = require("./utils/errorHandleMW");
 
 app.use(express.json());
-app.use(express.static(__dirname + '/uploads/images'))
-app.use(cors());
-app.use('/api/v1/users/', userRouter)
-app.use('/api/v1/cityService/', cityServiceRouter)
-app.use('/api/v1/communityBullet/', communityRouter)
-app.use('/api/v1/emergency/', emergencyRouter)
-app.use('/api/v1/event/', eventRouter)
-app.use('/api/v1/localBusiness/', localBusinessRouter)
 
+// CORS configuration
+app.use(cors({
+  origin: '*', // Allow requests from this origin
+}));
+
+// Serve static files
+app.use(express.static(__dirname + '/uploads/images'));
+
+// Routes
+app.use('/api/v1/users/', userRouter);
+app.use('/api/v1/cityService/', cityServiceRouter);
+app.use('/api/v1/communityBullet/', communityRouter);
+app.use('/api/v1/emergency/', emergencyRouter);
+app.use('/api/v1/event/', eventRouter);
+app.use('/api/v1/localBusiness/', localBusinessRouter);
+
+// Error handling middleware
 app.use(errorHandleMW);
 
 module.exports = app;

@@ -1,13 +1,16 @@
 const catchAsync = require('../utils/catchAsync');
 const AppExceptions = require('../utils/AppExceptions'); 
 const Emergency = require("../models/emergency");
+const Filter = require('../utils/filter');
+
 
     exports.createEmergency = catchAsync(async (req, res, next) => {
       let emergency = await Emergency.create({
         name: req.body.name,
+        number: req.body.number,
         description: req.body.description
       });
-      res.status(200).json({
+      res.status(201).json({
         status: "Success",
         data: emergency
       });

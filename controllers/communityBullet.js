@@ -3,7 +3,6 @@ const CommunityBullet = require("../models/communityBullet");
 
 exports.createCommunityBullet = async (req, res, next) => {
 
-  console.log(req.file);
   if(req.file){
     req.body.picture = req.file.filename
   }

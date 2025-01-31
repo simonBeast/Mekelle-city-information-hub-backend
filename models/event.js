@@ -10,6 +10,10 @@ const EventSchema = new mongoose.Schema({
         required:[true,"Please fill the description field"]
     },
 
+    date: {
+        type: Date,
+    },
+
     picture:{
         type:String,
     },

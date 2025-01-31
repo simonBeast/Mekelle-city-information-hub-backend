@@ -24,16 +24,23 @@ exports.login = async (req,res,next)=>{
 exports.signUp = async (req,res,next)=>{
     let newUser;
     try {
-        return newUser = await user.create({
+        newUser = await user.create({
                 email: req.body.email,
                 password: req.body.password,
                 role: req.body.role,
                 passwordConfirm: req.body.passwordConfirm
-            })        
+            })    
+            res.status(201).json({
+                status:"success",
+                user:newUser
+            })    
+
     }catch(err){
         console.log(err);
         return next(new AppExceptions(err,401))
     }
+
+ 
 }
     
 

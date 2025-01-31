@@ -16,6 +16,7 @@ const multerFilter = (req,file,cb)=>{
         cb(null,true);
     }
     else{
+        console.log(file)
         cb(new AppExceptions('Not an Image please enter a real image',400),false)
     }
 }

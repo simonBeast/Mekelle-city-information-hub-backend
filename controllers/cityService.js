@@ -71,9 +71,9 @@ exports.deleteCityService = async (req, res, next) => {
     if (!deletedCityService) {
       return next(new AppExceptions("No city service found with this ID", 404));
     }
-    res.status(204).json({
+    res.status(200).json({
       status: "Success",
-      data: null
+      data: deletedCityService
     });
   } catch (e) {
     console.log(e);

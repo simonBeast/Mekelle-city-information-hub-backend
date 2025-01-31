@@ -1,8 +1,13 @@
 const mongoose = require('mongoose');
 const EmergencySchema = new mongoose.Schema({
-   name:{
+    name:{
         type:String,
-        required:[true,"Please fill the name field"]
+        required:[true,"Please fill the number field"]
+    },
+    
+   number:{
+        type:String,
+        required:[true,"Please fill the number field"]
     },
 
     description:{

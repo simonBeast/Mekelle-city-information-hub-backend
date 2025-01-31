@@ -4,7 +4,7 @@ const AppExceptions = require('../utils/AppExceptions');
 const LocalBusiness = require("../models/localBusiness");
 
 exports.createLocalBusiness = catchAsync(async (req, res, next) => {
-
+  console.log(req.file)
   if(req.file){
     req.body.picture = req.file.filename
   }
@@ -12,9 +12,10 @@ exports.createLocalBusiness = catchAsync(async (req, res, next) => {
   let localBusiness = await LocalBusiness.create({
     name: req.body.name,
     category: req.body.category,
-    description: req.body.description
+    description: req.body.description,
+    picture: req.body.picture
   });
-  res.status(200).json({
+  res.status(201).json({
     status: "Success",
     data: localBusiness
   });
